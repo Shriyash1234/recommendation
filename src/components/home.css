@@ -1,0 +1,31 @@
+.home{
+    background-image:  url('./bg.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    font-size: 1.2rem;
+}
+.header{
+    height: 100px;
+}
+.products-display{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.product{
+    width:340px;
+    height: max-content;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.product-image{
+    padding-top:15px ;
+}
