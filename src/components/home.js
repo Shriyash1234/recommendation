@@ -96,12 +96,14 @@ function home(){
         //Getting Corresponding IDs from the purchasesd products
         for(let j =0;j<ArrInd.length;j++){
             // console.log(productData[j].product_id)
-            purchasedIDsArr.push(productData[indArr[j]].product_id)
+            purchasedIDsArr.push(productData[ArrInd[j]].product_id)
         }
         console.log(purchasedIDsArr)
 
         //Taking only unique IDs
         let uniqueIDs = [...new Set(IDsArr)]
+        let purchasedUniqueIDs = [...new Set(purchasedIDsArr)]
+        console.log('UniqueIds=', purchasedUniqueIDs)
 
         //Taking corresponding names, links and images.
         for(let r = 0;r<uniqueIDs.length;r++){
@@ -114,15 +116,16 @@ function home(){
             }
         }
 
-        for(let r = 0;r<purchasedIDsArr.length;r++){
-            for(let k = 0;k<productNames.length;k++){
-                if(productNames[k].product_id === purchasedIDsArr[r]){
-                    purcahsedProductNameArr.push(productNames[k].product_name)
-                    purcahsedProductImgArr.push(productNames[k].img_link)
-                    purcahsedProductLinkArr.push(productNames[k].product_link)
+        for(let w = 0;w<purchasedUniqueIDs.length;w++){
+            for(let q = 0;q<productNames.length;q++){
+                if(productNames[q].product_id === purchasedUniqueIDs[w]){
+                    purcahsedProductNameArr.push(productNames[q].product_name)
+                    purcahsedProductImgArr.push(productNames[q].img_link)
+                    purcahsedProductLinkArr.push(productNames[q].product_link)
                 }
             }
         }
+        console.log('Name=',purcahsedProductNameArr)
 
         //Agsin taking unique names,images and links
         let uniqueNames = [];
@@ -138,11 +141,11 @@ function home(){
                 uniqueLinks.push(productLinkArr[l])
             }
         }
-        for(let l =0;l<purcahsedProductNameArr.length;l++){
-            if(uniquepurchasedNames.includes(purcahsedProductNameArr[l])===false){
-                uniquepurchasedNames.push(productNameArr[l])
-                uniquepurchasedImgs.push(productImgArr[l])
-                uniquepurchasedLinks.push(productLinkArr[l])
+        for(let c =0;c<purcahsedProductNameArr.length;c++){
+            if(uniquepurchasedNames.includes(purcahsedProductNameArr[c])===false){
+                uniquepurchasedNames.push(purcahsedProductNameArr[c])
+                uniquepurchasedImgs.push(purcahsedProductImgArr[c])
+                uniquepurchasedLinks.push(purcahsedProductLinkArr[c])
             }
         }
 
@@ -171,7 +174,7 @@ function home(){
                     return (
                         <div className='product'>
                             <div className='product-name' key={name}>{name}</div>
-                            <a target='_blank' href={purchasedLinksArr[indArr.indexOf(name)]}><img className='product-image' src={purchasedImgsArr[indArr.indexOf(name)]}></img></a>
+                            <a target='_blank' href={purchasedLinksArr[purchasedIndArr.indexOf(name)]}><img className='product-image' src={purchasedImgsArr[purchasedIndArr.indexOf(name)]}></img></a>
                         </div>
                     )
                 })
