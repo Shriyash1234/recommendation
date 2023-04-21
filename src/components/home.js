@@ -4,35 +4,39 @@ import productNames from './product_id_Name2.json'
 import userData from './XTranspose.json'
 import {useEffect, useState} from 'react'
 import './home.css'
-import { useLocation,Link ,useParams } from 'react-router-dom'
+import Header from './header'
+import { useLocation,useNavigate } from 'react-router-dom'
 function home(){
 
-    
     const location = useLocation()
-    // let {index} = useParams();
+    let navigate = useNavigate();
+
     const { index } = location.state 
     const { name } = location.state
+
+    // function SetTheName(childData){
+	// 	setNam(childData);
+	// }
+    // useEffect(() => {
+    //     recommend()
+    //   }, [name])
     // const { index } = location.state
 
-    // const rowIndex = 1; // since Ashu is the second object in the array (index 1)
-    // const properties = Object.keys(data[rowIndex]);
-    // const value = data[rowIndex][properties[0]];
-
-    // console.log(userData[0])
+    //Implementing using name of the user
     console.log(name)
     let ArrInd = [];
     for(let t =0;t<643;t++){
-        if(userData[t].user_name == name)
+        if(userData[t].user_name == name)     //Check the naem of the user in the userData 
         {
-            const properties = Object.keys(userData[t]);
+            const properties = Object.keys(userData[t]);         //We are use object.keys as it we will can then iterate through JSON object by it's row number and not its name
             const len = properties.length
             for(let s = 1;s<len;s++){
                 const value = userData[t][properties[s]];
-                if(value != 0){
+                if(value != 0){                                  //If the value is not 0 means that the user has rated this product.
                     const productName = properties[s];
-                    console.log(productName)
+                    console.log(productName)                     // ID of the product       
                     for(let u=0;u<productData.length;u++){
-                        if(productData[u].product_id === productName){
+                        if(productData[u].product_id === productName){   // Taking indices of the product from the producData 
                             ArrInd.push(u);
                         }
                     }
@@ -116,6 +120,7 @@ function home(){
             }
         }
 
+        //Taking corresponding names, links and images for rated products.
         for(let w = 0;w<purchasedUniqueIDs.length;w++){
             for(let q = 0;q<productNames.length;q++){
                 if(productNames[q].product_id === purchasedUniqueIDs[w]){
@@ -127,7 +132,7 @@ function home(){
         }
         console.log('Name=',purcahsedProductNameArr)
 
-        //Agsin taking unique names,images and links
+        //Again taking unique names,images and links
         let uniqueNames = [];
         let uniqueImgs = [];
         let uniqueLinks= [];
@@ -141,6 +146,8 @@ function home(){
                 uniqueLinks.push(productLinkArr[l])
             }
         }
+
+        //Again taking unique names,images and links of rated products
         for(let c =0;c<purcahsedProductNameArr.length;c++){
             if(uniquepurchasedNames.includes(purcahsedProductNameArr[c])===false){
                 uniquepurchasedNames.push(purcahsedProductNameArr[c])
@@ -149,7 +156,7 @@ function home(){
             }
         }
 
-        //Returning three values and accessing them by indices
+        //Returning thr values and accessing them by indices
         return [uniqueNames,uniqueImgs,uniqueLinks,uniquepurchasedNames,uniquepurchasedImgs,uniquepurchasedLinks];
     }
     useEffect(()=>{
@@ -160,33 +167,31 @@ function home(){
         setpurchasedIndArr(newArr[3]);
         setpurchasedImgsArr(newArr[4]);
         setpurchasedLinksArr(newArr[5]);
-    },[]);
+    },[name]);
     return(
         <div className='home' >
-            <div className='header'>
-
-            </div>
-            <p>User Name: {name}</p>
-            <h1>Purchased products</h1>
+            <Header/>
+            <p className='User-name'>User Name: {name}</p>
+            <p className='products-heading'>Rated products</p>
             <div className='purchased-products products-display'>
                {
                 purchasedIndArr.map((name)=>{
                     return (
                         <div className='product'>
-                            <div className='product-name' key={name}>{name}</div>
+                            <div className='product-name'>{name}</div>
                             <a target='_blank' href={purchasedLinksArr[purchasedIndArr.indexOf(name)]}><img className='product-image' src={purchasedImgsArr[purchasedIndArr.indexOf(name)]}></img></a>
                         </div>
                     )
                 })
                }
             </div>
-            <h1>Recommended products</h1>
+            <p className='products-heading'>Recommended products</p>
             <div className='products-display'>
             {
                 indArr.map((name)=>{
                     return (
                         <div className='product'>
-                            <div className='product-name' key={name}>{name}</div>
+                            <div className='product-name'>{name}</div>
                             <a target='_blank' href={LinksArr[indArr.indexOf(name)]}><img className='product-image' src={ImgsArr[indArr.indexOf(name)]}></img></a>
                         </div>
                     )
