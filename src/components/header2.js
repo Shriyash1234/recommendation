@@ -16,7 +16,7 @@ function Header(props){
                 value={name||null}
                 getOptionLabel={(option) => option}
 				onChange={(event, option) => {
-					navigate('/recommendation/products',{state:{name: option}})
+					navigate('/recommendation/content-products',{state:{name: option}})
 				}}
 				
 				/>

@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway:wght@500&display=swap');
+.home{
+    background-image:  url('../images/bg.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #000;
+    font-size: 1.2rem;
+    font-family:Montserrat,sans-serif;
+    min-height: 100vh;
+}
+.header{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+.MuiFormLabel-root{
+  color: #fff !important;  
+}
+.css-12vlskc-MuiStack-root{
+    width: 500px !important;
+}
+.css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root{
+    border: 1px solid #fff !important;
+    color: #fff !important;
+}
+
+.products-display{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.product{
+    width:340px;
+    height: max-content;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+}
+.product-name{
+    text-align: justify;
+
+}
+.product-image{
+    padding-top:15px ;
+}
+.products-heading,.User-name{
+    margin-left: 50px;
+    font-family: Raleway,sans-serif;
+    color: #fff;
+}
+.User-name{
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+.products-heading{
+    font-size: 2rem;
+    font-weight: 500;
+}
+.popular{
+    margin-top: 0px;
+    padding-top: 40px;
+}
+.heading{
+    color: #fff;
+    margin-top: 0px;
+    padding-top: 100px;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+.entry-page{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+.choose{
+    margin: 0px;
+    color: #fff;
+    text-align: center;
+}
+.rect-box{
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    backdrop-filter: blur(0.3em);
+    border: 1px solid #000;
+    border-radius: 10px;
+    width:min(400px,80vw);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.recommedation{
+    color: #fff;
+    padding: 10px;
+    border: 1px solid #fff;
+    text-align: center;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: #000;
+    padding: 15px;
+}
+.button {
+    --color: #fff;
+    padding: 0.8em 1.7em;
+    background-color: transparent;
+    border-radius: .3em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 17px;
+    border: 1px solid;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: var(--color);
+    z-index: 1;
+   }
+   
+   .button::before, .button::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--color);
+    transition: 0.5s ease;
+   }
+   
+   .button::before {
+    top: -1em;
+    left: -1em;
+   }
+   
+   .button::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+   }
+   
+   .button:hover::before, .button:hover::after {
+    height: 450px;
+    width: 450px;
+   }
+   
+   .button:hover {
+    color: rgb(10, 25, 30);
+   }
+   
+   .button:active {
+    filter: brightness(.8);
+   }
+   
